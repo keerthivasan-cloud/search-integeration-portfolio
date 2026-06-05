@@ -7,22 +7,28 @@ const problems = [
     Icon: Search,
     title: 'Keyword Search is Blind',
     body: "Searching 'diameter tolerance' finds the word, not the concept. Miss a synonym, miss the document. Engineers resort to manual folder hunting.",
-    iconColor: 'text-slate-400',
-    iconBg: 'bg-slate-100',
+    iconColor: 'text-rose-400',
+    iconBg: 'bg-gradient-to-br from-rose-50 to-rose-100/60',
+    borderAccent: 'hover:border-rose-300/60',
+    glowColor: 'rgba(251,113,133,0.10)',
   },
   {
     Icon: Layers,
     title: 'Formats are Fragmented',
     body: 'PDF tables, Excel rows, DWG annotations, STEP metadata — all siloed in different tools, none of them searchable together.',
-    iconColor: 'text-slate-400',
-    iconBg: 'bg-slate-100',
+    iconColor: 'text-amber-400',
+    iconBg: 'bg-gradient-to-br from-amber-50 to-amber-100/60',
+    borderAccent: 'hover:border-amber-300/60',
+    glowColor: 'rgba(251,191,36,0.10)',
   },
   {
     Icon: Database,
     title: 'No Intelligence, Just Storage',
     body: "Your DMS stores files but understands nothing. There's no way to ask 'show parts with diameter > 50mm from client ABC' and get a correct answer.",
-    iconColor: 'text-slate-400',
-    iconBg: 'bg-slate-100',
+    iconColor: 'text-blue-400',
+    iconBg: 'bg-gradient-to-br from-blue-50 to-blue-100/60',
+    borderAccent: 'hover:border-blue-300/60',
+    glowColor: 'rgba(96,165,250,0.10)',
   },
 ];
 
@@ -32,7 +38,7 @@ export const ProblemSection: React.FC = () => {
   const inView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-28 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-section-light py-28 px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Eyebrow */}
         <motion.p
@@ -87,18 +93,22 @@ export const ProblemSection: React.FC = () => {
           </svg>
 
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {problems.map(({ Icon, title, body, iconColor, iconBg }, i) => (
+            {problems.map(({ Icon, title, body, iconColor, iconBg, borderAccent, glowColor }, i) => (
               <motion.div
                 key={i}
-                className="glass-card rounded-2xl p-8 border-l-4 border-slate-200 hover:border-primary/40 transition-colors"
+                className={`glass-card-elevated rounded-2xl p-8 border border-slate-100 border-l-4 border-l-slate-200 ${borderAccent} transition-all duration-300`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
+                whileHover={{
+                  scale: 1.025,
+                  boxShadow: `0 4px 6px rgba(0,0,0,0.04), 0 16px 48px ${glowColor}, 0 40px 80px rgba(0,0,0,0.06)`,
+                  y: -4,
+                }}
               >
-                {/* Icon with breathing pulse animation */}
-                <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-5 relative`}>
+                {/* Icon */}
+                <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-5 relative shadow-sm`}>
                   <Icon
                     className={`w-6 h-6 ${iconColor}`}
                     style={{

@@ -81,25 +81,32 @@ export const HeroSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen w-full bg-slate-50 flex items-center overflow-hidden pt-16"
+      className="relative min-h-screen w-full bg-hero-gradient flex items-center overflow-hidden pt-16"
     >
       {/* Grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-      {/* Emerald glow orb */}
+      {/* Emerald glow orb — top right */}
       <div
-        className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
+        className="absolute -top-20 right-0 w-[800px] h-[800px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(74,222,128,0.20) 0%, rgba(74,222,128,0.06) 45%, transparent 70%)',
           animation: 'breathe 7s ease-in-out infinite',
         }}
       />
-      {/* Cyan accent orb */}
+      {/* Cyan accent orb — bottom left */}
       <div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(0,242,255,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0,242,255,0.10) 0%, rgba(0,242,255,0.03) 50%, transparent 70%)',
           animation: 'breathe 9s ease-in-out infinite reverse',
+        }}
+      />
+      {/* Lime mid orb — faint center depth */}
+      <div
+        className="absolute top-1/3 left-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -translate-x-1/2"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(163,230,53,0.04) 0%, transparent 70%)',
         }}
       />
 
@@ -111,7 +118,7 @@ export const HeroSection: React.FC = () => {
             initial="initial"
             animate="animate"
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border border-primary/20"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-emerald-100/80 text-primary text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border border-primary/30 shadow-[0_2px_12px_rgba(74,222,128,0.18)]"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             Enterprise AI Search
@@ -150,14 +157,14 @@ export const HeroSection: React.FC = () => {
           >
             <a
               href="#contact"
-              className="px-7 py-3.5 bg-primary text-slate-900 rounded-full font-bold text-base shadow-[0_0_24px_rgba(74,222,128,0.35)] hover:shadow-[0_0_40px_rgba(74,222,128,0.55)] transition-shadow"
+              className="px-7 py-3.5 bg-gradient-to-r from-emerald-400 to-emerald-500 text-slate-900 rounded-full font-bold text-base shadow-[0_0_0_1px_rgba(74,222,128,0.4),0_4px_20px_rgba(74,222,128,0.40),0_12px_40px_rgba(74,222,128,0.20)] hover:shadow-[0_0_0_1px_rgba(74,222,128,0.6),0_4px_28px_rgba(74,222,128,0.55),0_16px_60px_rgba(74,222,128,0.28)] transition-shadow"
             >
               Request a Demo
             </a>
             <a
               href="#pipeline"
               onClick={(e) => { e.preventDefault(); document.getElementById('pipeline')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="px-7 py-3.5 border border-slate-300 text-slate-700 rounded-full font-bold text-base hover:border-slate-500 transition-colors"
+              className="px-7 py-3.5 border border-slate-200 bg-white/60 text-slate-700 rounded-full font-bold text-base hover:border-primary/40 hover:bg-white/90 hover:shadow-[0_4px_20px_rgba(74,222,128,0.10)] transition-all"
             >
               See How It Works
             </a>
@@ -173,7 +180,7 @@ export const HeroSection: React.FC = () => {
           >
             {stats.map((s, i) => (
               <div key={i} className="flex flex-col">
-                <span className="font-mono text-lg font-black text-slate-900">{s.value}</span>
+                <span className="font-mono text-lg font-black gradient-text">{s.value}</span>
                 <span className="text-xs text-slate-400 font-medium">{s.label}</span>
               </div>
             ))}
@@ -189,11 +196,16 @@ export const HeroSection: React.FC = () => {
         >
           {/* Emerald glow behind gears */}
           <div
-            className="absolute w-72 h-72 rounded-full pointer-events-none"
+            className="absolute w-80 h-80 rounded-full pointer-events-none"
             style={{
-              background: 'radial-gradient(circle, rgba(74,222,128,0.18) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(74,222,128,0.28) 0%, rgba(74,222,128,0.10) 40%, transparent 70%)',
               animation: 'breathe 5s ease-in-out infinite',
             }}
+          />
+          {/* Cyan halo ring */}
+          <div
+            className="absolute w-[420px] h-[420px] rounded-full pointer-events-none border border-emerald-200/40"
+            style={{ background: 'radial-gradient(circle, transparent 60%, rgba(0,242,255,0.06) 80%, transparent 100%)' }}
           />
 
           {/* Mouse-parallax container */}

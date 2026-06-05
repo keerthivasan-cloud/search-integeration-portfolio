@@ -4,14 +4,23 @@ export const FinalCTA: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative bg-dark text-white py-32 px-6 overflow-hidden"
+      className="relative bg-cta-dark text-white py-32 px-6 overflow-hidden"
     >
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(74,222,128,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(74,222,128,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Breathing emerald orb */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.15) 0%, transparent 70%)' }}
-        animate={{ scale: [1, 1.15, 1] }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.22) 0%, rgba(74,222,128,0.08) 40%, transparent 70%)' }}
+        animate={{ scale: [1, 1.18, 1] }}
         transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+      />
+      {/* Cyan accent orb */}
+      <motion.div
+        className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(0,242,255,0.07) 0%, transparent 65%)' }}
+        animate={{ scale: [1, 1.1, 1], x: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
       />
 
       <div className="relative max-w-3xl mx-auto text-center">
@@ -54,8 +63,8 @@ export const FinalCTA: React.FC = () => {
         >
           <motion.a
             href="mailto:contact@vitech.ai"
-            className="relative px-8 py-4 bg-primary text-slate-900 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(74,222,128,0.4)] transition-shadow overflow-hidden"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(74,222,128,0.6)' }}
+            className="relative px-8 py-4 bg-gradient-to-r from-emerald-400 to-emerald-500 text-slate-900 rounded-full font-bold text-lg shadow-[0_0_0_1px_rgba(74,222,128,0.5),0_4px_24px_rgba(74,222,128,0.45),0_16px_60px_rgba(74,222,128,0.25)] transition-shadow overflow-hidden"
+            whileHover={{ scale: 1.05, boxShadow: '0 0 0 2px rgba(74,222,128,0.7), 0 8px_36px rgba(74,222,128,0.60), 0 24px 80px rgba(74,222,128,0.30)' }}
             whileTap={{ scale: 0.97 }}
           >
             {/* Shimmer overlay */}
@@ -73,8 +82,8 @@ export const FinalCTA: React.FC = () => {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 border-2 border-white/20 text-white rounded-full font-bold text-lg hover:border-white/50 transition-colors"
-            whileHover={{ scale: 1.05 }}
+            className="px-8 py-4 border-2 border-white/15 bg-white/5 text-white rounded-full font-bold text-lg hover:border-white/40 hover:bg-white/10 transition-all backdrop-blur-sm"
+            whileHover={{ scale: 1.05, boxShadow: '0 4px 24px rgba(255,255,255,0.08)' }}
             whileTap={{ scale: 0.97 }}
           >
             Explore the Codebase

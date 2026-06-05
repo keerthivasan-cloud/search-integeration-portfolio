@@ -37,9 +37,12 @@ export const TechStackSection: React.FC = () => {
   return (
     <section
       id="stack"
-      className="relative bg-dark text-white py-28 px-6 overflow-hidden"
+      className="relative text-white py-28 px-6 overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #020617 0%, #041022 50%, #020617 100%)' }}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      {/* Deep center glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(74,222,128,0.05) 0%, transparent 70%)' }} />
 
       <div className="relative max-w-5xl mx-auto">
         <motion.p
@@ -83,16 +86,18 @@ export const TechStackSection: React.FC = () => {
                 {pills.map((pill, pillIdx) => (
                   <motion.span
                     key={pillIdx}
-                    className={`font-mono text-xs px-3 py-1.5 rounded-full border ${color} hover:opacity-100 opacity-80 cursor-default`}
+                    className={`font-mono text-xs px-3 py-1.5 rounded-full border ${color} hover:opacity-100 opacity-80 cursor-default backdrop-blur-sm`}
                     style={{
                       animation: `floatPill ${2.5 + pillIdx * 0.3}s ease-in-out infinite alternate`,
                       animationDelay: `${rowIdx * 0.15 + pillIdx * 0.12}s`,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',
+                      background: 'rgba(255,255,255,0.03)',
                     }}
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.8 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: rowIdx * 0.08 + pillIdx * 0.04 }}
-                    whileHover={{ scale: 1.1, opacity: 1 }}
+                    whileHover={{ scale: 1.1, opacity: 1, boxShadow: '0 4px 16px rgba(74,222,128,0.12), inset 0 1px 0 rgba(255,255,255,0.1)' }}
                   >
                     {pill}
                   </motion.span>

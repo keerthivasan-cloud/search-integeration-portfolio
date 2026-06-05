@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-dark border-t border-white/5 px-6 pt-16 pb-8">
+    <footer className="bg-gradient-to-b from-[#020617] to-[#010410] border-t border-white/8 px-6 pt-16 pb-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0 }}
           >
             <div className="text-xl font-black tracking-tighter text-white mb-3">
-              VITECH<span className="text-primary font-light"> INTELLIGENCE</span>
+              VITECH<span className="gradient-text font-light"> INTELLIGENCE</span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
               AI-powered industrial document search. Your knowledge, finally answerable.

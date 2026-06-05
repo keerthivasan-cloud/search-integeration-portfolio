@@ -54,8 +54,11 @@ const features = [
 
 export const SolutionFeatures: React.FC = () => {
   return (
-    <section id="features" className="relative bg-slate-50 py-28 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section id="features" className="relative bg-section-light py-28 px-6 overflow-hidden">
+      {/* Faint background orbs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.04) 0%, transparent 65%)' }} />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,242,255,0.04) 0%, transparent 65%)' }} />
+      <div className="max-w-6xl mx-auto relative">
         <motion.p
           className="text-xs font-bold tracking-widest uppercase text-primary mb-4 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -89,15 +92,15 @@ export const SolutionFeatures: React.FC = () => {
           {features.map(({ Icon, title, body, iconColor, iconBg, border }, i) => (
             <motion.div
               key={i}
-              className={`glass-card rounded-2xl p-7 border ${border} hover:shadow-xl transition-shadow`}
+              className={`glass-card-elevated rounded-2xl p-7 border ${border} transition-all duration-300 card-glow-green`}
               variants={{
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -8, boxShadow: '0 20px 60px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04)' }}
             >
               <motion.div
-                className={`w-11 h-11 rounded-xl ${iconBg} flex items-center justify-center mb-5`}
+                className={`w-11 h-11 rounded-xl ${iconBg} flex items-center justify-center mb-5 shadow-sm`}
                 whileHover={{ rotate: 5, scale: 1.1 }}
               >
                 <Icon

@@ -67,7 +67,11 @@ export const StatsSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="stats" ref={sectionRef} className="relative bg-slate-50 py-28 px-6 overflow-hidden">
+    <section id="stats" ref={sectionRef} className="relative bg-section-light py-28 px-6 overflow-hidden">
+      {/* Background depth orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full" style={{ background: 'radial-gradient(ellipse, rgba(74,222,128,0.05) 0%, transparent 65%)' }} />
+      </div>
       <div className="max-w-5xl mx-auto">
         <motion.p
           className="text-xs font-bold tracking-widest uppercase text-primary mb-4 text-center"
@@ -93,12 +97,16 @@ export const StatsSection: React.FC = () => {
           {STATS.map((stat, i) => (
             <motion.div
               key={i}
-              className="relative glass-card rounded-2xl p-8 text-center border border-slate-100 hover:shadow-xl transition-shadow overflow-hidden"
+              className="relative glass-card-elevated rounded-2xl p-8 text-center border border-slate-100/80 transition-all duration-300 overflow-hidden"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
+              whileHover={{
+                y: -6,
+                boxShadow: '0 4px 6px rgba(0,0,0,0.04), 0 20px 50px rgba(74,222,128,0.12), 0 40px 80px rgba(0,0,0,0.05)',
+                borderColor: 'rgba(74,222,128,0.25)',
+              }}
             >
               {/* Radial glow — intensity tracks counter progress */}
               <div
